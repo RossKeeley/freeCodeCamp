@@ -1,0 +1,69 @@
+<div id="body">
+  <div id="Heading">
+    <h1 id="title">Dalgona Coffee: Yay or Nay</h1>
+  </div>
+  <div>
+    <p id="description">Dalgona coffee, a delicious new trend originating from Korea, but does it take too much damn effort to make? You tell us, because we're way too indeceisive.</p>
+  </div>
+  <div id="form">
+    <form action="" id="survey-form">
+      <label for="name" id="name-label">Name</label>
+      <input type="text" id="name" name="name" required placeholder="Enter your name here"><br>
+      <label for="email" id="email-label">Email</label>
+      <input type="email" id="email" name="email" required placeholder="Enter your email here"><br>
+      <label for="number" id="number-label">Number</label>
+      <select id="dropdown" name="number">
+        <option value="085">085</option>
+        <option value="086">086</option>
+        <option value="087">087</option>
+      </select>
+      <input type="number" id="number" name="number" min="1" max="1000000" required placeholder="Enter your phone number here"><br>
+      
+      <div id="dalgona-coffee">
+        <h3>Yay or nay to dalgona coffee?</h3>
+        <label for="yay">Yay</label>
+        <input type="radio" id="yay" name="dalgona-coffee" value="yay">
+        <label for="nay">Nay</label>
+        <input type="radio" id="nay" name="dalgona-coffee" value="nay">
+      </div>
+      <div id="tea-coffee">
+        <h3>What is your digestive biscuit accompaniment preference?</h3>
+        <label for="coffee">Coffee</label>
+        <input type="radio" id="coffee" name="coffee-tea" value="coffee">
+        <label for="tea">Tea</label>
+        <input type="radio" id="tea" name="coffee-tea" value="tea">
+      </div>
+      
+      <div id="checkbox">
+        <h3>What hot drinks do you like, if any?</h3>
+        <label for="coffee">Coffee</label>
+        <input type="checkbox" name="coffee" value="coffee">
+        <label for="tea">Tea</label>
+        <input type="checkbox" name="tea" value="tea">
+        <label for="boba">Boba</label>
+        <input type="checkbox" name="boba" value="boba">
+        <label for="sake">Sake</label>
+        <input type="checkbox" name="sake" value="sake">
+      </div>
+      <div id="comments">
+        <h3>And now, over to the comments:</h3>
+        <label for="comments"></label>
+        <textarea name="comments" id="comments" cols="50" rows="5" placeholder="Tell us why you love or completely despise the living shit out of hot drinks here...lovingly obviously :)"></textarea>
+      </div>
+      <input type="submit" id="submit" name="submit" value="submit">  
+    </form>
+  </div>
+</div>
+
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+
+<!-- 
+
+Hello Camper!
+
+For now, the test suite only works in Chrome! Please read the README below in the JS Editor before beginning. Feel free to delete this message once you have read it. Good luck and Happy Coding! 
+
+- The freeCodeCamp Team 
+
+-->
+

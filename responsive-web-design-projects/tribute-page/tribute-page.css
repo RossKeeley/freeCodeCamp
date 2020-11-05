@@ -1,0 +1,15 @@
+#main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+#img-div {
+  width: inherit;
+}
+
+#image {
+  display: block;
+  max-width: 100%;
+}
