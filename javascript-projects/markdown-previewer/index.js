@@ -1,3 +1,4 @@
+marked.setOptions({breaks: true});
 var input = document.getElementById("editor");
 
 document.getElementById("preview").innerHTML = marked(document.getElementById("editor").value);
