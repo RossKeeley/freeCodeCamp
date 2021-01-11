@@ -13,7 +13,7 @@ function inputNumber(number, value) {
       document.getElementById("display").innerHTML = "";
       document.getElementById("output").innerHTML = "";
     }
-    document.getElementById("display").innerHTML += value;
+    document.getElementById("display").innerHTML = value;
     document.getElementById("output").innerHTML += value;
   })
 }
@@ -33,7 +33,7 @@ inputNumber("nine", 9);
 // Function to commit symbols to the display
 function inputSymbol(symbol, value) {
   document.getElementById(symbol).addEventListener("click", () => {
-    document.getElementById("display").innerHTML += value;
+    document.getElementById("display").innerHTML = value;
     document.getElementById("output").innerHTML += value;
 
   })
@@ -48,11 +48,9 @@ inputSymbol("decimal", ".");
 
 // Perform calculations
 // Add event listener to equals button to perform calculation on display inner html
-// document.getElementById("equals").addEventListener("click", () => {
-//   document.getElementById("display")innerHTML = eval(document.getElementById("output")innerHTML);
-// });
-
-
+document.getElementById("equals").addEventListener("click", () => {
+  document.getElementById("output").innerHTML += " = " + eval(document.getElementById("output").innerHTML);
+});
 // When the decimal element is clicked, a "." should append to the currently displayed value; two "." in one number should not be accepted
 
 // I should be able to perform any operation (+, -, *, /) on numbers containing decimal points
