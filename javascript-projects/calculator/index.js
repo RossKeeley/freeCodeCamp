@@ -1,4 +1,3 @@
-// const calcDisplay = document.getElementById("display").innerHTML;
 // Function to clear display using clear (AC) button
 document.getElementById("clear").addEventListener("click", () => {
   document.getElementById("display").innerHTML = "0";
@@ -34,17 +33,44 @@ function inputSymbol(symbol, value) {
     if (document.getElementById("output").innerHTML.includes("=")) {
       document.getElementById("output").innerHTML = document.getElementById("display").innerHTML + value;
       document.getElementById("display").innerHTML = value;
-    } else {
-      document.getElementById("display").innerHTML = value;
-      document.getElementById("output").innerHTML += value;
+    } else if (isNaN(document.getElementById("display").innerHTML) == true &&
+               isNaN(document.getElementById("output").innerHTML.slice(document.getElementById("output").innerHTML.length - 2, document.getElementById("output").innerHTML.length - 1)) == false &&
+               value == "-") {
+        document.getElementById("display").innerHTML = value;
+        document.getElementById("output").innerHTML += value;
+    } else if (isNaN(document.getElementById("display").innerHTML) == true &&
+               isNaN(document.getElementById("output").innerHTML.slice(document.getElementById("output").innerHTML.length - 2, document.getElementById("output").innerHTML.length - 1)) == true &&
+               value == "-") {
+        document.getElementById("output").innerHTML = document.getElementById("output").innerHTML.slice(0, document.getElementById("output").innerHTML.length - 1);
+        document.getElementById("display").innerHTML = value;
+        document.getElementById("output").innerHTML += value;
+    } else if (value == "-" && isNaN(document.getElementById("output").innerHTML.slice(document.getElementById("output").innerHTML.length - 1, document.getElementById("output").innerHTML.length)) == false) {
+        document.getElementById("display").innerHTML = value;
+        document.getElementById("output").innerHTML += value;
+    }else if (value !== "-" && isNaN(document.getElementById("output").innerHTML.slice(document.getElementById("output").innerHTML.length - 1, document.getElementById("output").innerHTML.length)) == false) {
+        document.getElementById("display").innerHTML = value;
+        document.getElementById("output").innerHTML += value;
+    } else if (value !== "-" && isNaN(document.getElementById("output").innerHTML.slice(document.getElementById("output").innerHTML.length - 2, document.getElementById("output").innerHTML.length - 1)) == true) {
+        document.getElementById("output").innerHTML = document.getElementById("output").innerHTML.slice(0, document.getElementById("output").innerHTML.length - 2);
+        document.getElementById("display").innerHTML = value;
+        document.getElementById("output").innerHTML += value;
+    } else if (isNaN(document.getElementById("display").innerHTML) == true &&
+               isNaN(document.getElementById("output").innerHTML.slice(document.getElementById("output").innerHTML.length - 1, document.getElementById("output").innerHTML.length)) == true) {
+        document.getElementById("output").innerHTML = document.getElementById("output").innerHTML.slice(0, document.getElementById("output").innerHTML.length - 1);
+        document.getElementById("display").innerHTML = value;
+        document.getElementById("output").innerHTML += value;
+    } else if (isNaN(document.getElementById("output").innerHTML.slice(document.getElementById("output").innerHTML.length - 1, document.getElementById("output").innerHTML.length)) == true) {
+        document.getElementById("output").innerHTML = document.getElementById("output").innerHTML.slice(0, document.getElementById("output").innerHTML.length - 1);
+        document.getElementById("display").innerHTML = value;
+        document.getElementById("output").innerHTML += value;
     };
   });
 };
 // Calling the function for each symbol as it is clicked on
-inputSymbol("divide", " / ");
-inputSymbol("multiply", " * ");
-inputSymbol("subtract", " - ");
-inputSymbol("add", " + ");
+inputSymbol("divide", "/");
+inputSymbol("multiply", "*");
+inputSymbol("subtract", "-");
+inputSymbol("add", "+");
 // Commit decimal symbol to the display console
 document.getElementById("decimal").addEventListener("click", () => {
   if (document.getElementById("display").innerHTML.indexOf(".") < 0) {
@@ -58,6 +84,3 @@ document.getElementById("equals").addEventListener("click", () => {
   document.getElementById("display").innerHTML = eval(document.getElementById("output").innerHTML);
   document.getElementById("output").innerHTML += " = " + eval(document.getElementById("output").innerHTML);
 });
-
-// If 2 or more operators are entered consecutively, the operation performed should be the last operator entered (excluding the negative (-) sign.
-// When inserting new symbols, delete existing in display and prevent from appearing adjacent to one another (with exception of negative (-) symbol) in the output.
