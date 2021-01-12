@@ -1,11 +1,9 @@
 // const calcDisplay = document.getElementById("display").innerHTML;
-
 // Function to clear display using clear (AC) button
 document.getElementById("clear").addEventListener("click", () => {
   document.getElementById("display").innerHTML = "0";
   document.getElementById("output").innerHTML = "";
 });
-
 // Function to commit numbers to the display console
 function inputNumber(number, value) {
   document.getElementById(number).addEventListener("click", () => {
@@ -14,14 +12,11 @@ function inputNumber(number, value) {
       document.getElementById("output").innerHTML = "";
     } else if (isNaN(document.getElementById("display").innerHTML) == true && document.getElementById("display").innerHTML.indexOf(".") < 0) {
       document.getElementById("display").innerHTML = "";
-    }
+    };
     document.getElementById("display").innerHTML += value;
     document.getElementById("output").innerHTML += value;
-  })
-}
-
- // && (document.getElementById("display").innerHTML.indexOf(".") < 0)
-
+  });
+};
 // Calling the funciton for each number as it is clicked on
 inputNumber("zero", 0);
 inputNumber("one", 1);
@@ -33,7 +28,6 @@ inputNumber("six", 6);
 inputNumber("seven", 7);
 inputNumber("eight", 8);
 inputNumber("nine", 9);
-
 // Function to commit symbols to the display console
 function inputSymbol(symbol, value) {
   document.getElementById(symbol).addEventListener("click", () => {
@@ -46,13 +40,11 @@ function inputSymbol(symbol, value) {
     };
   });
 };
-
 // Calling the function for each symbol as it is clicked on
 inputSymbol("divide", " / ");
 inputSymbol("multiply", " * ");
 inputSymbol("subtract", " - ");
 inputSymbol("add", " + ");
-
 // Commit decimal symbol to the display console
 document.getElementById("decimal").addEventListener("click", () => {
   if (document.getElementById("display").innerHTML.indexOf(".") < 0) {
@@ -60,13 +52,12 @@ document.getElementById("decimal").addEventListener("click", () => {
     document.getElementById("display").innerHTML += document.getElementById("decimal").innerHTML;
   };
 });
-
 // Perform calculations
 // Add event listener to equals button to perform calculation on display inner html
 document.getElementById("equals").addEventListener("click", () => {
   document.getElementById("display").innerHTML = eval(document.getElementById("output").innerHTML);
   document.getElementById("output").innerHTML += " = " + eval(document.getElementById("output").innerHTML);
-
 });
 
 // If 2 or more operators are entered consecutively, the operation performed should be the last operator entered (excluding the negative (-) sign.
+// When inserting new symbols, delete existing in display and prevent from appearing adjacent to one another (with exception of negative (-) symbol) in the output.
