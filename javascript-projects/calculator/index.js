@@ -12,11 +12,15 @@ function inputNumber(number, value) {
     if (document.getElementById("display").innerHTML === "0" || (document.getElementById("output").innerHTML).includes("=")) {
       document.getElementById("display").innerHTML = "";
       document.getElementById("output").innerHTML = "";
+    } else if (isNaN(document.getElementById("display").innerHTML) == true && document.getElementById("display").innerHTML.indexOf(".") < 0) {
+      document.getElementById("display").innerHTML = "";
     }
     document.getElementById("display").innerHTML += value;
     document.getElementById("output").innerHTML += value;
   })
 }
+
+ // && (document.getElementById("display").innerHTML.indexOf(".") < 0)
 
 // Calling the funciton for each number as it is clicked on
 inputNumber("zero", 0);
@@ -64,7 +68,5 @@ document.getElementById("equals").addEventListener("click", () => {
   document.getElementById("output").innerHTML += " = " + eval(document.getElementById("output").innerHTML);
 
 });
-
-// Numbers and symbols should appear seperately in the display, not together. This does not include decimals
 
 // If 2 or more operators are entered consecutively, the operation performed should be the last operator entered (excluding the negative (-) sign.
