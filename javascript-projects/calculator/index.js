@@ -33,7 +33,7 @@ inputNumber("nine", 9);
 // Function to commit symbols to the display console
 function inputSymbol(symbol, value) {
   document.getElementById(symbol).addEventListener("click", () => {
-    if (document.getElementById("output").innerHTML.indexOf("=") > -1) {
+    if (document.getElementById("output").innerHTML.includes("=")) {
       document.getElementById("output").innerHTML = document.getElementById("display").innerHTML + value;
       document.getElementById("display").innerHTML = value;
     } else {
@@ -56,8 +56,6 @@ document.getElementById("decimal").addEventListener("click", () => {
     document.getElementById("display").innerHTML += document.getElementById("decimal").innerHTML;
   };
 });
-
-// inputSymbol("decimal", ".");
 
 // Perform calculations
 // Add event listener to equals button to perform calculation on display inner html
