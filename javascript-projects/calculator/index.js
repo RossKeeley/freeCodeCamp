@@ -66,10 +66,7 @@ document.getElementById("equals").addEventListener("click", () => {
   document.getElementById("output").innerHTML += " = " + eval(document.getElementById("output").innerHTML);
 
 });
-// When the decimal element is clicked, a "." should append to the currently displayed value; two "." in one number should not be accepted
 
 // Numbers and symbols should appear seperately in the display, not together. This does not include decimals
 
-// No more than one decimal point should appear per number i.e. only one on the display, but more than one should be allowed on the output
-
-// The display should allow for decimals to appear to the right and left of numbers on the display
+// If 2 or more operators are entered consecutively, the operation performed should be the last operator entered (excluding the negative (-) sign.
