@@ -9,7 +9,7 @@ document.getElementById("clear").addEventListener("click", () => {
 // Function to commit numbers to the display console
 function inputNumber(number, value) {
   document.getElementById(number).addEventListener("click", () => {
-    if (document.getElementById("display").innerHTML === "0" || (document.getElementById("output").innerHTML).indexOf("=") > -1) {
+    if (document.getElementById("display").innerHTML === "0" || (document.getElementById("output").innerHTML).includes("=")) {
       document.getElementById("display").innerHTML = "";
       document.getElementById("output").innerHTML = "";
     }
