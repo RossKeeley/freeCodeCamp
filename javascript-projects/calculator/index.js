@@ -1,19 +1,21 @@
+var display = document.getElementById("display");
+var output = document.getElementById("output");
 // Function to clear display using clear (AC) button
 document.getElementById("clear").addEventListener("click", () => {
-  document.getElementById("display").innerHTML = "0";
-  document.getElementById("output").innerHTML = "";
+  display.innerHTML = "0";
+  output.innerHTML = "";
 });
 // Function to commit numbers to the display console
 function inputNumber(number, value) {
   document.getElementById(number).addEventListener("click", () => {
-    if (document.getElementById("display").innerHTML === "0" || (document.getElementById("output").innerHTML).includes("=")) {
-      document.getElementById("display").innerHTML = "";
-      document.getElementById("output").innerHTML = "";
-    } else if (isNaN(document.getElementById("display").innerHTML) == true && document.getElementById("display").innerHTML.indexOf(".") < 0) {
-      document.getElementById("display").innerHTML = "";
+    if (display.innerHTML === "0" || (output.innerHTML).includes("=")) {
+      display.innerHTML = "";
+      output.innerHTML = "";
+    } else if (isNaN(display.innerHTML) == true && display.innerHTML.indexOf(".") < 0) {
+      display.innerHTML = "";
     };
-    document.getElementById("display").innerHTML += value;
-    document.getElementById("output").innerHTML += value;
+    display.innerHTML += value;
+    output.innerHTML += value;
   });
 };
 // Calling the funciton for each number as it is clicked on
@@ -30,39 +32,40 @@ inputNumber("nine", 9);
 // Function to commit symbols to the display console
 function inputSymbol(symbol, value) {
   document.getElementById(symbol).addEventListener("click", () => {
-    if (document.getElementById("output").innerHTML.includes("=")) {
-      document.getElementById("output").innerHTML = document.getElementById("display").innerHTML + value;
-      document.getElementById("display").innerHTML = value;
-    } else if (isNaN(document.getElementById("display").innerHTML) == true &&
-               isNaN(document.getElementById("output").innerHTML.slice(document.getElementById("output").innerHTML.length - 2, document.getElementById("output").innerHTML.length - 1)) == false &&
+    if (output.innerHTML.includes("=")) {
+      output.innerHTML = display.innerHTML + value;
+      display.innerHTML = value;
+    } else if (isNaN(display.innerHTML) == true &&
+               isNaN(output.innerHTML.slice(output.innerHTML.length - 2, output.innerHTML.length - 1)) == false &&
                value == "-") {
-        document.getElementById("display").innerHTML = value;
-        document.getElementById("output").innerHTML += value;
-    } else if (isNaN(document.getElementById("display").innerHTML) == true &&
-               isNaN(document.getElementById("output").innerHTML.slice(document.getElementById("output").innerHTML.length - 2, document.getElementById("output").innerHTML.length - 1)) == true &&
+        display.innerHTML = value;
+        output.innerHTML += value;
+    } else if (isNaN(display.innerHTML) == true &&
+               isNaN(output.innerHTML.slice(output.innerHTML.length - 2, output.innerHTML.length - 1)) == true &&
                value == "-") {
-        document.getElementById("output").innerHTML = document.getElementById("output").innerHTML.slice(0, document.getElementById("output").innerHTML.length - 1);
-        document.getElementById("display").innerHTML = value;
-        document.getElementById("output").innerHTML += value;
-    } else if (value == "-" && isNaN(document.getElementById("output").innerHTML.slice(document.getElementById("output").innerHTML.length - 1, document.getElementById("output").innerHTML.length)) == false) {
-        document.getElementById("display").innerHTML = value;
-        document.getElementById("output").innerHTML += value;
-    }else if (value !== "-" && isNaN(document.getElementById("output").innerHTML.slice(document.getElementById("output").innerHTML.length - 1, document.getElementById("output").innerHTML.length)) == false) {
-        document.getElementById("display").innerHTML = value;
-        document.getElementById("output").innerHTML += value;
-    } else if (value !== "-" && isNaN(document.getElementById("output").innerHTML.slice(document.getElementById("output").innerHTML.length - 2, document.getElementById("output").innerHTML.length - 1)) == true) {
-        document.getElementById("output").innerHTML = document.getElementById("output").innerHTML.slice(0, document.getElementById("output").innerHTML.length - 2);
-        document.getElementById("display").innerHTML = value;
-        document.getElementById("output").innerHTML += value;
-    } else if (isNaN(document.getElementById("display").innerHTML) == true &&
-               isNaN(document.getElementById("output").innerHTML.slice(document.getElementById("output").innerHTML.length - 1, document.getElementById("output").innerHTML.length)) == true) {
-        document.getElementById("output").innerHTML = document.getElementById("output").innerHTML.slice(0, document.getElementById("output").innerHTML.length - 1);
-        document.getElementById("display").innerHTML = value;
-        document.getElementById("output").innerHTML += value;
-    } else if (isNaN(document.getElementById("output").innerHTML.slice(document.getElementById("output").innerHTML.length - 1, document.getElementById("output").innerHTML.length)) == true) {
-        document.getElementById("output").innerHTML = document.getElementById("output").innerHTML.slice(0, document.getElementById("output").innerHTML.length - 1);
-        document.getElementById("display").innerHTML = value;
-        document.getElementById("output").innerHTML += value;
+        output.innerHTML = output.innerHTML.slice(0, output.innerHTML.length - 1);
+        display.innerHTML = value;
+        output.innerHTML += value;
+    } else if (value == "-" && isNaN(output.innerHTML.slice(output.innerHTML.length - 1, output.innerHTML.length)) == false) {
+        display.innerHTML = value;
+        output.innerHTML += value;
+    }else if (value !== "-" && isNaN(output.innerHTML.slice(output.innerHTML.length - 1, output.innerHTML.length)) == false) {
+        display.innerHTML = value;
+        output.innerHTML += value;
+    } else if (value !== "-" && isNaN(output.innerHTML.slice(output.innerHTML.length - 2, output.innerHTML.length - 1)) == true) {
+        output.innerHTML = output.innerHTML.slice(0, output.innerHTML.length - 2);
+        display.innerHTML = value;
+        output.innerHTML += value;
+    } else if (isNaN(display.innerHTML) == true &&
+               isNaN(output.innerHTML.slice(output.innerHTML.length - 1, output.innerHTML.length)) == true
+              ) {
+        output.innerHTML = output.innerHTML.slice(0, output.innerHTML.length - 1);
+        display.innerHTML = value;
+        output.innerHTML += value;
+    } else if (isNaN(output.innerHTML.slice(output.innerHTML.length - 1, output.innerHTML.length)) == true) {
+        output.innerHTML = output.innerHTML.slice(0, output.innerHTML.length - 1);
+        display.innerHTML = value;
+        output.innerHTML += value;
     };
   });
 };
@@ -73,14 +76,14 @@ inputSymbol("subtract", "-");
 inputSymbol("add", "+");
 // Commit decimal symbol to the display console
 document.getElementById("decimal").addEventListener("click", () => {
-  if (document.getElementById("display").innerHTML.indexOf(".") < 0) {
-    document.getElementById("output").innerHTML += document.getElementById("decimal").innerHTML;
-    document.getElementById("display").innerHTML += document.getElementById("decimal").innerHTML;
+  if (display.innerHTML.indexOf(".") < 0) {
+    output.innerHTML += document.getElementById("decimal").innerHTML;
+    display.innerHTML += document.getElementById("decimal").innerHTML;
   };
 });
 // Perform calculations
 // Add event listener to equals button to perform calculation on display inner html
 document.getElementById("equals").addEventListener("click", () => {
-  document.getElementById("display").innerHTML = eval(document.getElementById("output").innerHTML);
-  document.getElementById("output").innerHTML += " = " + eval(document.getElementById("output").innerHTML);
+  display.innerHTML = eval(output.innerHTML);
+  output.innerHTML += " = " + eval(output.innerHTML);
 });
