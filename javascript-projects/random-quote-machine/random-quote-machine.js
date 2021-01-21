@@ -1,3 +1,5 @@
+require('jquery');
+
 const API = 'https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json';
 
 class App extends React.Component {
@@ -34,28 +36,28 @@ class App extends React.Component {
 
   render() {
     const {quotes, index} = this.state;
-
     const quote = quotes[index];
-
-    const tweetURL = 'https://twitter.com/intent/tweet?text=${quote.quote} - ${quote.author}';
+    const tweetURL = `https://twitter.com/intent/tweet?text=${quote.quote} - ${quote.author}`;
 
     return (
       <div id="quote-box" className="wrapper d-flex align-items-center justify-content-center">
-
-        <div className="col-6 box p-4 rounded">
+        <div id="container">
           {
             quote && (
               <div className="mb-4">
-                <h5 id="text">
-                  "{quote.quote}"
-                </h5>
-                <cite id="author" className="d-block text-right">- {quote.author}</cite>
+                <h5 id="text">"{quote.quote}"</h5>
+                <cite id="author" className="d-block text-right"> - {quote.author}</cite>
               </div>
             )
           }
-          <div className="d-flex justify-content-between">
-            <a id="tweet-quote" className="btn btn-primary" target="_blank" href={tweetURL}>Tweet</a>
-            <button id="new-quote" className="btn btn-primary" onClick={this.getRandomIndex}>Get Quote</button>
+
+          <div id="button-box" className="d-flex justify-content-between">
+            <a id="tweet-quote" className="btn btn-sm btn-primary" target="_blank" href={tweetURL}>
+              <i className="fab fa-twitter"></i> Tweet
+            </a>
+            <button id="new-quote" className="btn btn-sm btn-primary" onClick={this.getRandomIndex}>
+              <i className="fas fa-random"></i> Get Quote
+            </button>
           </div>
 
         </div>
