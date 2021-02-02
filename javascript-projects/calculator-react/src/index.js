@@ -18,7 +18,6 @@ class Calculator extends React.Component {
 
     const inputNumber = () => {
       this.setState({
-        console.log
         output: 1234,
         currentSymbol: 5678
       });
